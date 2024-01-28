@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV Bob Blandin</title>
+    <link rel="stylesheet" href="style.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
+    <script type="text/javascript" src="script.js"></script>
+
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="main-content">
+    <div id="info-panel">
+        <img id="profile-picture" src="bob.jpeg" alt="Bob Blandin" onclick="generatePDF()"/>
+        <div class="information-category">
+            <h2 class="category-title">Contact</h2>
+            <div class="simple-information information"><img src="mail.svg" alt="mail"/>bob.blandin@gmail.com</div>
+            <div class="simple-information information"><img src="phone.svg" alt="phone"/>06 32 84 84 51</div>
+            <div class="simple-information information"><img src="location.svg" alt="location"/>2 rue de la distillerie, 38400 Saint Martin d'Hères</div>
+        </div>
+
+        <div class="information-category">
+            <h2 class="category-title">Compétences</h2>
+            <div class="information">
+                <h3>Languages</h3>
+                <p>Java, MySQL, HTML, CSS Js, Typescript, Gradle Kotlin</p>
+            </div>
+            <div class="information">
+                <h3>Frameworks</h3>
+                <p>Spring, Angular, Hibernate, JHipster</p>
+            </div>
+            <div class="information">
+                <h3>Tests</h3>
+                <p>JUnit, Mockito, Selenium, Cypress</p>
+            </div>
+            <div class="information">
+                <h3>Tools</h3>
+                <p>Git, Docker, Sonar, Jira, Azure, Maven, IntelliJ</p>
+            </div>
+        </div>
+
+        <div class="information-category">
+            <h2 class="category-title">Formations</h2>
+            <div class="information">
+                <p class="date">Décembre 2020</p>
+                <h3>Aras Innovator</h3>
+                <p>Fonctionnel et développement</p>
+            </div>
+
+            <div class="information">
+                <p class="date">2017 - 2018</p>
+                <h3>Master 2 MIAGE</h3>
+                <p>Université Grenoble Alpes</p>
+            </div>
+        </div>
+
+        <div class="information-category">
+            <h2 class="category-title">Divers / Loisirs</h2>
+            <div class="information">
+                <p>CodingGame - Fall Challenge 2023 (232ème / 4669)</p>
+            </div>
+
+            <div class="information">
+                <p>Cinéma, Poker</p>
+            </div>
+
+            <div class="information">
+                <p>Développement de projets personnels</p>
+            </div>
+        </div>
+    </div>
+    <div id="right-panel">
+        <div id="header">
+            <h1 id="name"><span>Bob</span> Blandin</h1>
+            <h3 id="job">Développeur Fullstack</h3>
+            <p>En tant que développeur full stack avec plus de 6 ans d'expérience, je possède des compétences qui me permettent de gérer à la fois les aspects back-end et
+                front-end lors du développement d'une application. Curieux et passionné, je me forme continuellement pour rester à jour avec les dernières évolutions
+                technologiques dans mon domaine, notamment à travers la réalisation de projets personnels.</p>
+        </div>
+
+        <div id="experiences">
+            <h2>Expériences</h2>
+            <ul>
+                <li class="experience">
+                    <h2>Depuis juin 2022</h2>
+                    <h3>Schneider Electric (Kaizen Solutions)</h3>
+                    <h1>Prestation de développement Frontend</h1>
+                    <p>
+                        J'interviens en tant que développeur front-end sur un projet d'application web axé sur la visualisation et l'alerte des ressources
+                        (eau/gaz/électricité) utilisées par des bâtiments professionnels à l'échelle internationale. Ce projet implique plus de 100 collaborateurs
+                        répartis dans le monde entier au sein de plusieurs équipes définies en fonction du scope fonctionnel et technique. La gestion du projet se fait
+                        selon la méthodologie agile SAFE, où la langue officielle est l'anglais.
+                    </p>
+                    <ul>
+                        <li>Développement de micro-applications Angular gérées avec Nx</li>
+                        <li>Contribution à l'amélioration de la pipeline CI/CD sur Azure DevOps</li>
+                        <li>Élaboration de tests unitaires et de tests d'intégration Cypress</li>
+                        <li>Utilisation de GraphQL pour la communication avec le backend</li>
+                        <li>Présentation des progrès lors des <i>sprint demo</i></li>
+                    </ul>
+                </li>
+
+                <li class="experience">
+                    <h2>Septembre 2017 - Juin 2022</h2>
+                    <h3>Acuity Solutions</h3>
+                    <h1>Ingénieur développement Java</h1>
+                    <p>
+                        En tant qu'alternant lors de ma dernière année de Master, puis en tant qu'ingénieur en développement, j'ai contribué de manière continue au
+                        développement du logiciel PLEIADE, un client lourd en Java utilisant principalement Swing pour l'interface graphique. Ce logiciel, un
+                        configurateur de produits interfacé avec des PLM, est vendu à de
+                        grands comptes tels qu'Alstom, Arquus et PSA.
+                    </p>
+                    <ul>
+                        <li>Définition des spécifications techniques et développement de nouvelles fonctionnalités</li>
+                        <li>Gestion de la livraison et documentation des nouvelles versions</li>
+                        <li>Support de niveau 3 auprès des clients</li>
+                        <li>Migration vers des technologies plus appropriées (passage d'Ant à build Gradle, initialisation de la pipeline CI/CD, remplacement de Swing par
+                            des vues Web intégrées)
+                        </li>
+                        <li>Accompagnement des juniors et tutorat d'alternance</li>
+                        <li>Projet alternatif de configurateur commercial interfacé avec PLEIADE</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
