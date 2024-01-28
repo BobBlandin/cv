@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
 </head>
-<body>
+<body onload="pageLoaded()">
 <div id="main-content">
     <div id="info-panel">
         <img id="profile-picture" src="bob.jpeg" alt="Bob Blandin" onclick="generatePDF()"/>
@@ -76,9 +76,11 @@
     </div>
     <div id="right-panel">
         <div id="header">
+            <!--            <h1 id="name"><span>Bob</span> Blandin <small id="age"></small></h1>-->
             <h1 id="name"><span>Bob</span> Blandin</h1>
             <h3 id="job">Développeur Fullstack</h3>
-            <p>En tant que développeur full stack avec plus de 6 ans d'expérience, je possède des compétences qui me permettent de gérer à la fois les aspects back-end et
+            <p>En tant que développeur full stack de <span id="age"></span> ans avec plus de 6 ans d'expérience, je possède des compétences qui me permettent de gérer à
+                la fois les aspects back-end et
                 front-end lors du développement d'une application. Curieux et passionné, je me forme continuellement pour rester à jour avec les dernières évolutions
                 technologiques dans mon domaine, notamment à travers la réalisation de projets personnels.</p>
         </div>

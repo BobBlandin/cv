@@ -123,6 +123,13 @@ body {
     margin: 0;
 }
 
+/*#age {*/
+/*    font-size: 0.5em;*/
+/*    !*color: var(--secondary-color);*!*/
+/*    margin-left: 4mm;*/
+/*    !*position: absolute;*!*/
+/*}*/
+
 #header > h1 > span {
     font-weight: 700;
 }

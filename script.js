@@ -1,3 +1,5 @@
+const BIRTH_DATE = "1995-07-21";
+
 function generatePDF() {
     const cvRoot = document.querySelector("#main-content");
 
@@ -22,4 +24,9 @@ function generatePDF() {
         pdf.save("Your_PDF_Name.pdf");
         $("#main-content").hide();
     });
+}
+
+function pageLoaded() {
+    const age = Math.floor((new Date().getTime() - new Date(BIRTH_DATE).getTime()) / (1000 * 60 * 60 * 24 * 365));
+    document.querySelector("#age").innerHTML = age;
 }
