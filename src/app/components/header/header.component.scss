@@ -1,0 +1,25 @@
+@import "../../styles/theme";
+
+h1 {
+  color: $main-color;
+  font-size: 3em;
+  font-weight: 500;
+  margin: 0;
+}
+
+h1 > span {
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 0 0 5mm;
+}
+
+p {
+  margin: 0;
+  font-size: 0.9em;
+  color: $secondary-color;
+  line-height: $paragraph-interline;
+}
