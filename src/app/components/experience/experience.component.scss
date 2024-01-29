@@ -1,0 +1,33 @@
+@import "../../styles/theme";
+
+h2 {
+  font-size: 1.1em;
+  margin: 0 0 1mm;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 0 0 1.7mm;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 0 0 4mm;
+  color: $main-color;
+}
+
+p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+  line-height: $paragraph-interline;
+}
+
+ul {
+  padding: 4mm;
+  font-size: 0.9em;
+}
+
+ul > li:not(:last-child) {
+  margin-bottom: 2mm;
+}

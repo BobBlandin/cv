@@ -1,0 +1,77 @@
+@import "./styles/theme";
+
+@page {
+  size: A4;
+}
+
+#root {
+  width: 210mm;
+  height: 297mm;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+
+  font-family: Calibri, sans-serif;
+  font-size: 4mm;
+
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 72.8mm 1fr;
+}
+
+@media screen {
+  #root {
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media print {
+  #root {
+    box-shadow: none;
+  }
+}
+
+#main {
+  padding-left: 7.2mm;
+  padding-right: 7.2mm;
+  padding-top: $top-start;
+}
+
+#header-wrapper {
+  margin-bottom: 10mm;
+}
+
+#experiences > h2 {
+  margin: 0 0 5mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.5mm solid $main-color;
+}
+
+#experiences > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 0.5mm solid $main-color;
+}
+
+#experiences > ul > li {
+  margin-left: 5mm;
+  color: $secondary-color;
+}
+
+#experiences > ul > li:not(:last-child) {
+  margin-bottom: 7mm;
+}
+
+cv-experience::before {
+  content: " ";
+  display: block;
+  width: 3mm;
+  height: 3mm;
+  background-color: white;
+  position: absolute;
+  border: 1mm solid $main-color;
+  border-radius: 50%;
+  margin-left: -7.5mm;
+}

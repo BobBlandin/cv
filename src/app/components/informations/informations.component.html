@@ -1,0 +1,31 @@
+<img id="photo" src="{{ this.photo }}" alt="Bob Blandin"/>
+<div class="information-category">
+    <h2 class="category-title">Contact</h2>
+    <div class="simple-information information"><img src="../../../assets/mail.svg" alt="mail"/>{{ this.contact.mail }}</div>
+    <div class="simple-information information"><img src="../../../assets/phone.svg" alt="phone"/>{{ this.contact.phone }}</div>
+    <div class="simple-information information"><img src="../../../assets/location.svg" alt="location"/>{{ this.contact.address }}</div>
+</div>
+
+<div class="information-category">
+    <h2 class="category-title">Compétences</h2>
+    <div *ngFor="let competence of this.competences" class="information">
+        <h3>{{ competence.type }}</h3>
+        <p>{{ competence.names.join(", ") }}</p>
+    </div>
+</div>
+
+<div class="information-category">
+    <h2 class="category-title">Formations</h2>
+    <div *ngFor="let formation of this.formations" class="information">
+        <p class="date">{{ formation.date }}</p>
+        <h3>{{ formation.name }}</h3>
+        <p>{{ formation.description }}</p>
+    </div>
+</div>
+
+<div class="information-category">
+    <h2 class="category-title">Divers / Loisirs</h2>
+    <div *ngFor="let other of this.others" class="information">
+        <p>{{ other }}</p>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+@import "../../styles/theme";
+
+:host {
+  height: 100%;
+  overflow: hidden;
+  background: $main-color;
+  color: white;
+}
+
+#photo {
+  width: 43.7mm;
+  height: 43.7mm;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  margin: $top-start auto;
+}
+
+.information-category {
+  margin-left: 12.8mm;
+}
+
+.category-title {
+  font-size: 1.5em;
+  padding-bottom: 1mm;
+  border-bottom: 0.5mm solid white;
+  margin-top: 0;
+  margin-bottom: 5mm;
+}
+
+.simple-information {
+  display: flex;
+  align-items: center;
+}
+
+.simple-information > img {
+  height: 4.5mm;
+  margin-right: 2mm;
+}
+
+.information > h3 {
+  font-size: 1.1em;
+  margin: 0 0 2mm;
+}
+
+.information > p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.information > .date {
+  font-size: 0.8em;
+  color: #BDBDBD;
+  margin-bottom: 1mm;
+}
+
+.information-category > .information:not(:last-child) {
+  margin-bottom: 3.5mm;
+}
+
+.information-category:not(:last-child) {
+  margin-bottom: 7.5mm;
+}
