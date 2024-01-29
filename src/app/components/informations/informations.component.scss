@@ -61,3 +61,13 @@
 .information-category:not(:last-child) {
   margin-bottom: 7.5mm;
 }
+
+#qrcode-gh {
+  position: absolute;
+  margin-top: -17mm;
+  margin-left: 54mm;
+
+  img {
+    width: 14mm;
+  }
+}
