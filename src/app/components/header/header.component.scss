@@ -1,5 +1,22 @@
 @import "../../styles/theme";
 
+#qrcode-gh {
+  position: absolute;
+  margin-left: 110mm;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    width: 16mm;
+  }
+
+  small {
+    font-size: 0.7em;
+    font-style: italic;
+  }
+}
+
 h1 {
   color: $main-color;
   font-size: 3em;
