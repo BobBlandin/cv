@@ -1,6 +1,6 @@
 # Cv
 
-Angular standalone app to display my CV, in combiation with a bob_blandin.json file.
+Angular standalone app to build and display my CV, in combination with a bob_blandin.json file.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
 
