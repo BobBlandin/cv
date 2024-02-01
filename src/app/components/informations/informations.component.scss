@@ -1,7 +1,8 @@
 @import "../../styles/theme";
 
 :host {
-  height: 100%;
+  // not working with an height 100% on the pdf generation
+  height: $cvHeight;
   overflow: hidden;
   background: $main-color;
   color: white;
@@ -31,6 +32,11 @@
 .simple-information {
   display: flex;
   align-items: center;
+}
+
+.simple-information > a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .simple-information > img {
