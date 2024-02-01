@@ -1,17 +1,17 @@
-<div *ngIf="this.data" id="root">
-    <cv-informations [contact]="this.data.contact" [competences]="this.data.competences" [formations]="this.data.formations"
-                     [others]="this.data.others" [photo]="this.data.photo"></cv-informations>
-    <div id="main">
-        <div id="header-wrapper">
-            <cv-header [personal]="this.data.personal"></cv-header>
-        </div>
-        <div id="experiences">
-            <h2>Expériences</h2>
-            <ul>
-                <li *ngFor="let experience of this.data.experiences">
-                    <cv-experience [experience]="experience"></cv-experience>
-                </li>
-            </ul>
-        </div>
+<div *ngIf="this.data" id="root" #cvRoot (click)="downloadAsPdf()">
+  <cv-informations [contact]="this.data.contact" [competences]="this.data.competences" [formations]="this.data.formations"
+                   [others]="this.data.others" [photo]="this.data.photo"></cv-informations>
+  <div id="main">
+    <div id="header-wrapper">
+      <cv-header [personal]="this.data.personal"></cv-header>
     </div>
+    <div id="experiences">
+      <h2>Expériences</h2>
+      <ul>
+        <li *ngFor="let experience of this.data.experiences">
+          <cv-experience [experience]="experience"></cv-experience>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

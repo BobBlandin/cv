@@ -5,6 +5,18 @@ h2 {
   margin: 0 0 1mm;
 }
 
+h2::before {
+  content: " ";
+  display: block;
+  width: 3mm;
+  height: 3mm;
+  background-color: white;
+  position: absolute;
+  border: 1mm solid $main-color;
+  border-radius: 50%;
+  margin-left: -7.63mm;
+}
+
 h3 {
   font-size: 1em;
   margin: 0 0 1.7mm;
@@ -26,6 +38,15 @@ p {
 ul {
   padding: 2mm 4mm;
   font-size: 0.9em;
+  list-style: none;
+}
+
+ul > li::before {
+  content: "•";
+  color: $main-color;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 ul > li:not(:last-child) {

@@ -1,9 +1,14 @@
 <img id="photo" src="{{ this.photo }}" alt="Bob Blandin"/>
 <div class="information-category">
     <h2 class="category-title">Contact</h2>
-    <div class="simple-information information"><img src="../../../assets/mail.svg" alt="mail"/>{{ this.contact.mail }}</div>
-    <div class="simple-information information"><img src="../../../assets/phone.svg" alt="phone"/>{{ this.contact.phone }}</div>
-    <div class="simple-information information"><img src="../../../assets/location.svg" alt="location"/>{{ this.contact.address }}</div>
+    <div class="simple-information information"><img
+            src="../../../assets/mail.png"
+            alt="mail"/><a href="mailto:{{ this.contact.mail }}">{{ this.contact.mail }}</a>
+    </div>
+    <div class="simple-information information"><img src="../../../assets/phone.png" alt="phone"/><a
+            href="tel:+33{{ this.contact.phone }}">{{ this.contact.phone }}</a></div>
+    <div class="simple-information information"><img src="../../../assets/location.png" alt="location"/><a
+            href="https://www.google.com/maps/place/{{ this.contact.address }}">{{ this.contact.address }}</a></div>
 </div>
 
 <div class="information-category">

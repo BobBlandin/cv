@@ -6,7 +6,7 @@
 
 #root {
   width: 210mm;
-  height: 297mm;
+  height: $cvHeight;
   margin: 0;
   padding: 0;
   background-color: white;
@@ -64,14 +64,14 @@
   margin-bottom: 3mm;
 }
 
-cv-experience::before {
-  content: " ";
-  display: block;
-  width: 3mm;
-  height: 3mm;
-  background-color: white;
-  position: absolute;
-  border: 1mm solid $main-color;
-  border-radius: 50%;
-  margin-left: -7.5mm;
-}
+//cv-experience::before {
+//  content: " ";
+//  display: block;
+//  width: 3mm;
+//  height: 3mm;
+//  background-color: white;
+//  position: absolute;
+//  border: 1mm solid $main-color;
+//  border-radius: 50%;
+//  margin-left: -7.63mm;
+//}
