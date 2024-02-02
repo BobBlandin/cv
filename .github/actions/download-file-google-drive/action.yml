@@ -12,7 +12,7 @@ runs:
         access_token: ${{ inputs.access_token }}
         file_id: ${{ inputs.folder_id }}
       run: |
-        http_code=$(curl -L -X GET \
+        http_code=$(curl --write-out '%{http_code}' --silent --output /dev/null -L -X GET \
         https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token&alt=media)
         
         echo "Http code: $http_code"
