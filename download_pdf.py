@@ -43,7 +43,8 @@ print(driver.title)
 driver.implicitly_wait(5)
 
 # click on the screen at 100, 100
-driver.execute_script("document.elementFromPoint(100, 100).click();")
+# driver.execute_script("document.elementFromPoint(100, 100).click();")
+driver.find_element(By.ID, 'downloadButton').click()
 
 driver.implicitly_wait(5)
 

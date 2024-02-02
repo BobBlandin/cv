@@ -1,4 +1,7 @@
-<div *ngIf="this.data && !this.downloaded" id="root" #cvRoot (click)="downloadAsPdf()">
+<div>
+    <button id="downloadButton" (click)="downloadAsPdf()">Download as PDF</button>
+</div>
+<div *ngIf="this.data && !this.downloaded" id="root" #cvRoot>
     <cv-informations [contact]="this.data.contact" [competences]="this.data.competences" [formations]="this.data.formations"
                      [others]="this.data.others" [photo]="this.data.photo"></cv-informations>
     <div id="main">
