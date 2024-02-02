@@ -23,7 +23,8 @@ options = [
     "--ignore-certificate-errors",
     # log level to debug
     "--log-level=0",
-    "--enable-logging",
+    "--enable-logging --v=1",
+    "--verbose",
     "--headless",
     # "--disable-gpu",
     # "--window-size=1920,1200",
