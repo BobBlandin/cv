@@ -1,0 +1,17 @@
+inputs:
+  access_token:
+    required: true
+  file_id:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      env:
+        access_token: ${{ inputs.access_token }}
+        file_id: ${{ inputs.folder_id }}
+      run: |
+        curl -L -X GET \
+        https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token&alt=media
+        

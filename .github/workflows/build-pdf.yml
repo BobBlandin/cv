@@ -12,6 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setting up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Installing package list
+        run: apt list --installed
+      - name: Removing previous chrome instances on runner
+        run: sudo apt purge google-chrome-stable
+
+      # Need to fetch reqs if needed
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
@@ -20,16 +35,31 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Install dependencies..."
-          npm ci  
+          npm ci
+
+      - uses: ./.github/actions/request-google-token
+        name: Request Google Token
+        id: request_google_token
+        with:
+          private_key_id: ${{ secrets.GOOGLE_PRIVATE_KEY_ID }}
+          private_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          service_account_mail: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          scope: "https://www.googleapis.com/auth/drive.file"
+
+      - uses: ./.github/actions/download-file-google-drive
+        name: Download personal data
+        with:
+          access_token: ${{ steps.request_google_token.outputs.access_token }}
+          file_id: 18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn
 
       - name: Run
         run: |
+          ls -l
           echo "Buil app..."
           npm run start &
 
-      - name: Open Selenium
-        run: |
-          echo "Open Selenium..."
+#      - name: Run Selenium and download PDF
+#        run: python download_pdf.py
 #          selenium-standalone start
 
 #      - name: Send mail
