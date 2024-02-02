@@ -58,6 +58,8 @@ driver.implicitly_wait(5)
 elt = driver.find_element(By.ID, 'root')
 print("Element found: ", elt)
 
+print("Button text: ", driver.find_element(By.ID, 'downloadButton').text)
+
 logs = driver.get_log('browser')
 print("Logs: ", logs)
 
