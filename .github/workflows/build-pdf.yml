@@ -22,10 +22,11 @@ jobs:
           echo "Install dependencies..."
           npm ci  
 
-      - name: Build And run
+      - name: Run
         run: |
           echo "Buil app..."
-          npm run start
+          npm run start &
+
       - name: Open Selenium
         run: |
           echo "Open Selenium..."
