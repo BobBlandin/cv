@@ -12,6 +12,8 @@ runs:
         access_token: ${{ inputs.access_token }}
         file_id: ${{ inputs.file_id }}
       run: |
+        echo "Downloading file from Google Drive [$file_id]"
+        
         url="https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token&alt=media"
         echo "Downloading file from Google Drive: $url"
         curl https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token

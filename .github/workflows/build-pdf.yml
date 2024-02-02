@@ -50,7 +50,7 @@ jobs:
         name: Download personal data
         with:
           access_token: ${{ steps.request_google_token.outputs.access_token }}
-          file_id: 18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn
+          file_id: "18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn"
 
       - name: Run
         run: |
