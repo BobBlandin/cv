@@ -1,0 +1,11 @@
+on: workflow_dispatch
+
+jobs:
+    build-pdf:
+        name: "Prettier check"
+        runs-on: lite-runner
+        steps:
+            - uses: actions/checkout@v4
+            - name: Build
+              run: |
+                echo "Buil app..."
