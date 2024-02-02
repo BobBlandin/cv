@@ -33,4 +33,11 @@ driver = webdriver.Chrome(options=chrome_options)
 
 driver.get('http://localhost:4200/')
 print(driver.title)
+
+# click on the screen
+driver.find_element_by_id('root').click()
+
+# wait 2 seconds
+driver.implicitly_wait(2)
+
 driver.quit()

@@ -46,9 +46,11 @@ jobs:
           echo "Buil app..."
           npm run start &
 
-#      - name: Run Selenium and download PDF
-#        run: python download_pdf.py
-#          selenium-standalone start
+      - name: Run Selenium and download PDF
+        run: python download_pdf.py
+
+      - name: Check pdf
+        run: ls -l
 
 #      - name: Send mail
 #        uses: dawidd6/action-send-mail@v3

@@ -56,14 +56,14 @@ export class AppComponent implements OnInit {
                     pdf.link(a.offsetLeft, a.offsetTop, a.offsetWidth, a.offsetHeight, {url: a.href});
                 });
 
-                window.open(pdf.output('bloburl'), '_blank');
-                // pdf.save(
-                //     'CV_' +
-                //     this.data.personal.firstName.toUpperCase() +
-                //     '_' +
-                //     this.data.personal.lastName.toUpperCase() +
-                //     '.pdf',
-                // );
+                // window.open(pdf.output('bloburl'), '_blank');
+                pdf.save(
+                    'CV_' +
+                    this.data.personal.firstName.toUpperCase() +
+                    '_' +
+                    this.data.personal.lastName.toUpperCase() +
+                    '.pdf',
+                );
             },
         });
     }
