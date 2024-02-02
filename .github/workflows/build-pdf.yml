@@ -43,12 +43,9 @@ jobs:
         run: |
           curl -L -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
           ls -l src/assets
-          cat src/assets/bob_blandin.json
           echo "Buil app..."
-          npm run start
-
-      - name: Run Selenium and download PDF
-        run: python download_pdf.py
+          npm run start &
+          python download_pdf.py
 
       - name: Check pdf
         run: ls -l
