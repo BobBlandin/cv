@@ -12,6 +12,12 @@ runs:
         access_token: ${{ inputs.access_token }}
         file_id: ${{ inputs.folder_id }}
       run: |
-        curl -L -X GET \
-        https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token&alt=media
+        http_code=$(curl -L -X GET \
+        https://www.googleapis.com/drive/v3/files/$file_id?access_token=$access_token&alt=media)
+        
+        echo "Http code: $http_code"
+        if [[ $http_code -ne 200 ]]; then
+            echo "Error when downloading the file from Google Drive"
+            exit 1
+        fi
         
