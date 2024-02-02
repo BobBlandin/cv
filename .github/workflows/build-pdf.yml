@@ -11,6 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.5.0'
+
+      - name: Install dependencies
+        run: |
+          echo "Install dependencies..."
+          npm install  
+
       - name: Build
         run: |
           echo "Buil app..."
