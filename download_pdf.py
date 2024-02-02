@@ -1,8 +1,12 @@
 import chromedriver_autoinstaller
+import logging
 import os
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.remote_connection import LOGGER
+
+LOGGER.setLevel(logging.DEBUG)
 
 display = Display(visible=0, size=(800, 800))
 display.start()
@@ -18,7 +22,7 @@ options = [
     "--window-size=1200,1200",
     "--ignore-certificate-errors"
 
-    # "--headless",
+    "--headless",
     # "--disable-gpu",
     # "--window-size=1920,1200",
     # "--ignore-certificate-errors",
