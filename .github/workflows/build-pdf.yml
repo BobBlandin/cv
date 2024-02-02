@@ -45,6 +45,7 @@ jobs:
           ls -l src/assets
           echo "Buil app..."
           npm run start &
+          sleep 20
           python download_pdf.py
 
       - name: Check pdf
