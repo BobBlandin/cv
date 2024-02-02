@@ -40,8 +40,8 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get('http://localhost:4200/')
 print(driver.title)
 
-# click on the screen
-driver.find_element(By.ID, 'root').click()
+# click on the screen at 100, 100
+driver.execute_script("document.elementFromPoint(100, 100).click();")
 
 # wait 2 seconds
 driver.implicitly_wait(5)
