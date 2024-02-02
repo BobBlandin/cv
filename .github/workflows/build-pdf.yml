@@ -42,9 +42,9 @@ jobs:
           LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
         run: |
           curl -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
-          ls -l
+          ls -l src/assets
           echo "Buil app..."
-          npm run start &
+          npm run start
 
       - name: Run Selenium and download PDF
         run: python download_pdf.py
