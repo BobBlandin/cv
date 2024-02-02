@@ -37,30 +37,11 @@ jobs:
           echo "Install dependencies..."
           npm ci
 
-      - uses: ./.github/actions/request-google-token
-        name: Request Google Token
-        id: request_google_token
-        with:
-          private_key_id: ${{ secrets.GOOGLE_PRIVATE_KEY_ID }}
-          private_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-          service_account_mail: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
-          scope: "https://www.googleapis.com/auth/drive.file"
-
-      #      - uses: ./.github/actions/download-file-google-drive
-      #        name: Download personal data
-      #        with:
-      #          access_token: ${{ steps.request_google_token.outputs.access_token }}
-      #          file_id: "18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn"
-
-      - name: Download file
-        uses: playeveryware/action-google-drive-download@v1
-        with:
-          token: ${{ steps.request_google_token.outputs.access_token  }}
-          file-id: 18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn
-          path: ./
-
       - name: Run
+        env:
+          LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
         run: |
+          curl -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
           ls -l
           echo "Buil app..."
           npm run start &
