@@ -40,10 +40,11 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get('http://localhost:4200/')
 print(driver.title)
 
+driver.implicitly_wait(5)
+
 # click on the screen at 100, 100
 driver.execute_script("document.elementFromPoint(100, 100).click();")
 
-# wait 2 seconds
 driver.implicitly_wait(5)
 
 # display if root exist always
