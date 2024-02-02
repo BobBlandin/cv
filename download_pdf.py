@@ -52,4 +52,7 @@ driver.implicitly_wait(5)
 elt = driver.find_element(By.ID, 'root')
 print("Element found: ", elt)
 
+for entry in driver.get_log('browser'):
+    print(entry)
+
 driver.quit()
