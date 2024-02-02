@@ -41,7 +41,7 @@ jobs:
         env:
           LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
         run: |
-          curl -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
+          curl --write-out '%{http_code}' --silent --output /dev/null -L -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
           ls -l src/assets
           echo "Buil app..."
           npm run start
