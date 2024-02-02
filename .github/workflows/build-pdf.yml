@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-pdf:
-    name: "Prettier check"
+    name: "Build PDF"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +42,3 @@ jobs:
           #          attachments: attachments.zip,git.diff,./dist/static/*.js
           # Optional priority: 'high', 'normal' (default) or 'low'
           priority: normal
-          # Optional nodemailerlog: true/false
-          nodemailerlog: false
-          # Optional nodemailerdebug: true/false if true lognodem will also be set true
-          nodemailerdebug: false
