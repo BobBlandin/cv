@@ -1,4 +1,5 @@
 import chromedriver_autoinstaller
+import os
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -30,6 +31,10 @@ options = [
 for option in options:
     chrome_options.add_argument(option)
 
+## set download directory as current executable path
+prefs = {"download.default_directory": os.getcwd()}
+options.add_experimental_option("prefs", prefs)
+
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get('http://localhost:4200/')
@@ -39,6 +44,6 @@ print(driver.title)
 driver.find_element(By.ID, 'root').click()
 
 # wait 2 seconds
-driver.implicitly_wait(2)
+driver.implicitly_wait(5)
 
 driver.quit()
