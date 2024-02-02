@@ -46,11 +46,18 @@ jobs:
           service_account_mail: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
           scope: "https://www.googleapis.com/auth/drive.file"
 
-      - uses: ./.github/actions/download-file-google-drive
-        name: Download personal data
+      #      - uses: ./.github/actions/download-file-google-drive
+      #        name: Download personal data
+      #        with:
+      #          access_token: ${{ steps.request_google_token.outputs.access_token }}
+      #          file_id: "18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn"
+
+      - name: Download file
+        uses: playeveryware/action-google-drive-download@v1
         with:
-          access_token: ${{ steps.request_google_token.outputs.access_token }}
-          file_id: "18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn"
+          token: ${{ steps.request_google_token.outputs.access_token  }}
+          file-id: 18ixC1EpMasuriA6XH5Gg9dbaiBNaFrPn
+          path: ./
 
       - name: Run
         run: |
