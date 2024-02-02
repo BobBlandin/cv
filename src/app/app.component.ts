@@ -34,9 +34,11 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.data = PersonalData as unknown as Data;
+        console.log("Loaded data");
     }
 
     downloadAsPdf(): void {
+        console.log("Download as PDF");
         const rootElement = this.cvRoot.nativeElement;
         const width = rootElement.getBoundingClientRect().width;
         const height = rootElement.getBoundingClientRect().height;
