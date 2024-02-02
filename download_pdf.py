@@ -1,6 +1,7 @@
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 display = Display(visible=0, size=(800, 800))
 display.start()
@@ -35,7 +36,7 @@ driver.get('http://localhost:4200/')
 print(driver.title)
 
 # click on the screen
-driver.find_element_by_id('root').click()
+driver.find_element(By.ID, 'root').click()
 
 # wait 2 seconds
 driver.implicitly_wait(2)
