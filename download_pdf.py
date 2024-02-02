@@ -33,7 +33,7 @@ for option in options:
 
 ## set download directory as current executable path
 prefs = {"download.default_directory": os.getcwd()}
-options.add_experimental_option("prefs", prefs)
+chrome_options.add_experimental_option("prefs", prefs)
 
 driver = webdriver.Chrome(options=chrome_options)
 
