@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Install dependencies..."
-          npm install  
+          npm ci  
 
       - name: Build
         run: |
