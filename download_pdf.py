@@ -46,4 +46,8 @@ driver.find_element(By.ID, 'root').click()
 # wait 2 seconds
 driver.implicitly_wait(5)
 
+# display if root exist always
+elt = driver.find_element(By.ID, 'root')
+print("Element found: ", elt)
+
 driver.quit()

@@ -28,6 +28,7 @@ import {Data} from './model/data.model';
 })
 export class AppComponent implements OnInit {
     data: Data = undefined;
+    downloaded = false;
 
     @ViewChild('cvRoot', {static: false}) public cvRoot: ElementRef;
 
@@ -64,6 +65,7 @@ export class AppComponent implements OnInit {
                     this.data.personal.lastName.toUpperCase() +
                     '.pdf',
                 );
+                this.downloaded = true;
             },
         });
     }
