@@ -43,8 +43,14 @@ jobs:
         env:
           LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
         run: |
-          curl -L -X GET $LINK_GDRIVE_DATA -o src/assets/bob_blandin.json
-          ls -l src/assets
+          destData="src/assets/bob_blandin.json"
+          curl -L -X GET $LINK_GDRIVE_DATA -o $destData
+          if [ -f $destData ]; then
+            echo "File downloaded"
+          else
+            echo "File not downloaded"
+            exit 1
+          fi
           echo "Buil app..."
           npm run start &
           sleep 20
@@ -53,9 +59,9 @@ jobs:
       - name: Check pdf exists
         run: |
           echo "Check if pdf exists..."
-          FILENAME=$(jq -r '.personnal.firstname + "_" + .personnal.lastname' src/assets/bob_blandin.json)
-          echo "Filename: $FILENAME"
-          if [ -f "src/assets/CV_$FILENAME.pdf" ]; then
+          NAME=$(jq -r '.personal.firstname + "_" + .personal.lastname' src/assets/bob_blandin.json | tr '[:lower:]' '[:upper:]')
+          echo "Name: $NAME"
+          if [ -f "src/assets/CV_$NAME.pdf" ]; then
             echo "File exists"
           else
             echo "File does not exist"
