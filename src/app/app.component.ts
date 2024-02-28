@@ -66,8 +66,9 @@ export class AppComponent implements OnInit {
         pdf.setFont('calibri', 'normal');
         pdf.html(rootElement, {
             callback: (pdf) => {
+                const rootElementOffset = rootElement.getBoundingClientRect();
                 rootElement.querySelectorAll("a").forEach((a) => {
-                    pdf.link(a.offsetLeft, a.offsetTop, a.offsetWidth, a.offsetHeight, {url: a.href});
+                    pdf.link(a.offsetLeft - rootElementOffset.left, a.offsetTop - rootElementOffset.top, a.offsetWidth, a.offsetHeight, {url: a.href});
                 });
 
 
@@ -79,8 +80,15 @@ export class AppComponent implements OnInit {
                         this.openPdfInNewTab(pdf);
                         break;
                 }
+
+                // Must reload the page to avoid a bug with the PDF rendering if it renders multiple times. Don't know why the image disappears.
+                this.reloadPage();
             },
         });
+    }
+
+    private reloadPage(): void {
+        window.location.reload();
     }
 
     private openPdfInNewTab(pdf: jsPDF) {
