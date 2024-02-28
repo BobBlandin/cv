@@ -43,7 +43,7 @@ jobs:
         env:
           LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
         run: |
-          destData="src/assets/bob_blandin.json"
+          destData="src/assets/data.json"
           curl -L -X GET $LINK_GDRIVE_DATA -o $destData
           if [ -f $destData ]; then
             echo "File downloaded"
@@ -57,40 +57,33 @@ jobs:
           python download_pdf.py
 
       - name: Check pdf exists
+        id: check_pdf
         run: |
           echo "Check if pdf exists..."
-          NAME=$(cat src/assets/bob_blandin.json | jq -r '.personal.firstName + "_" + .personal.lastName' | tr '[:lower:]' '[:upper:]')
+          NAME=$(cat src/assets/data.json | jq -r '.personal.firstName + "_" + .personal.lastName' | tr '[:lower:]' '[:upper:]')
           echo "Name: $NAME"
-          if [ -f "src/assets/CV_$NAME.pdf" ]; then
+          FILE="CV_$NAME.pdf"
+          if [ -f $FILE ]; then
             echo "File exists"
+            FILE="CV_$NAME.pdf"
+            echo "FILE=$FILE" >> $GITHUB_OUTPUT
           else
             echo "File does not exist"
             exit 1
           fi
-#      - name: Send mail
-#        uses: dawidd6/action-send-mail@v3
-#        with:
-#          # Required mail server address if not connection_url:
-#          server_address: smtp.gmail.com
-#          # Server port, default 25:
-#          server_port: 465
-#          # Optional whether this connection use TLS (default is true if server_port is 465)
-#          secure: true
-#          # Optional (recommended) mail server username:
-#          username: ${{secrets.MAIL}}
-#          # Optional (recommended) mail server password:
-#          password: ${{secrets.MAIL_PASSWORD}}
-#          # Required mail subject:
-#          subject: Github Actions job result
-#          # Required recipients' addresses:
-#          to: ${{ github.event.inputs.mail }}
-#          # Required sender full name (address can be skipped):
-#          from: GitHub Actions (CV)
-#          # Optional plain body:
-#          body: Build job of ${{github.repository}} completed successfully!
-#          # Optional unsigned/invalid certificates allowance:
-#          ignore_cert: true
-#          # Optional attachments:
-#          #          attachments: attachments.zip,git.diff,./dist/static/*.js
-#          # Optional priority: 'high', 'normal' (default) or 'low'
-#          priority: normal
+
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{secrets.MAIL}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Github Actions job result
+          to: ${{ github.event.inputs.mail }}
+          from: GitHub Actions (CV)
+          body: Build job of ${{github.repository}} completed successfully!
+          ignore_cert: true
+          attachments: ${{ steps.check_pdf.outputs.FILE }}
+          priority: normal

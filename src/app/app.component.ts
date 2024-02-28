@@ -2,7 +2,7 @@ import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import jsPDF from 'jspdf';
-import PersonalData from '../assets/bob_blandin.json';
+import PersonalData from '../assets/data.json';
 
 import {ExperienceComponent} from './components/experience/experience.component';
 import {HeaderComponent} from './components/header/header.component';
