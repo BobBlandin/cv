@@ -1,11 +1,93 @@
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      mail:
+        description: 'Destination mail'
+        required: true
 
 jobs:
-    build-pdf:
-        name: "Prettier check"
-        runs-on: lite-runner
-        steps:
-            - uses: actions/checkout@v4
-            - name: Build
-              run: |
-                echo "Buil app..."
+  build-pdf:
+    name: "Build PDF"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setting up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Installing package list
+        run: apt list --installed
+      - name: Removing previous chrome instances on runner
+        run: sudo apt purge google-chrome-stable
+
+      # Need to fetch reqs if needed
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+      # Need to install font of microsoft to ubuntu system because on pdf generation calibri font not working on ubuntu (because windows font ??)
+      - name: Install Microsoft fonts
+        run: sudo apt-get install fonts-crosextra-carlito fonts-crosextra-caladea
+
+      - name: Install JQ
+        run: sudo apt-get install jq
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: |
+          echo "Install dependencies..."
+          npm ci
+
+      - name: Run
+        env:
+          LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
+        run: |
+          destData="src/assets/data.json"
+          curl -L -X GET $LINK_GDRIVE_DATA -o $destData
+          if [ -f $destData ]; then
+            echo "File downloaded"
+          else
+            echo "File not downloaded"
+            exit 1
+          fi
+          echo "Buil app..."
+          npm run start &
+          sleep 20
+          python download_pdf.py
+
+      - name: Check pdf exists
+        id: check_pdf
+        run: |
+          echo "Check if pdf exists..."
+          NAME=$(cat src/assets/data.json | jq -r '.personal.firstName + "_" + .personal.lastName' | tr '[:lower:]' '[:upper:]')
+          echo "Name: $NAME"
+          FILE="CV_$NAME.pdf"
+          if [ -f $FILE ]; then
+            echo "File exists"
+            FILE="CV_$NAME.pdf"
+            echo "FILE=$FILE" >> $GITHUB_OUTPUT
+          else
+            echo "File does not exist"
+            exit 1
+          fi
+
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{secrets.MAIL}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Github Actions job result
+          to: ${{ github.event.inputs.mail }}
+          from: GitHub Actions (CV)
+          body: Build job of ${{github.repository}} completed successfully!
+          ignore_cert: true
+          attachments: ${{ steps.check_pdf.outputs.FILE }}
+          priority: normal

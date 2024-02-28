@@ -37,9 +37,11 @@
 .simple-information > a {
   color: inherit;
   text-decoration: inherit;
+  display: flex;
+  align-items: center;
 }
 
-.simple-information > img {
+.simple-information > a > img {
   height: 4.5mm;
   margin-right: 2mm;
 }

@@ -7,8 +7,8 @@
 #root {
   width: 210mm;
   height: $cvHeight;
-  margin: 0;
-  padding: 0;
+  //margin: 0;
+  //padding: 0;
   background-color: white;
   box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 
@@ -64,14 +64,40 @@
   margin-bottom: 3mm;
 }
 
-//cv-experience::before {
-//  content: " ";
-//  display: block;
-//  width: 3mm;
-//  height: 3mm;
-//  background-color: white;
-//  position: absolute;
-//  border: 1mm solid $main-color;
-//  border-radius: 50%;
-//  margin-left: -7.63mm;
-//}
+#actions {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-gap: 20px;
+  margin: 10px;
+}
+
+#actions > button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px;
+  transition: filter 0.3s;
+}
+
+#downloadButton {
+  border: none;
+  background-color: $main-color;
+  color: white;
+}
+
+#downloadButton:hover {
+  filter: brightness(1.3);
+}
+
+#openButton {
+  border: 2px solid $main-color;
+  background-color: white;
+  color: $main-color;
+}
+
+#openButton:hover {
+  filter: brightness(0.9);
+}
+
+
