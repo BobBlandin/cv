@@ -26,7 +26,7 @@ options = [
     "--log-level=0",
     "--enable-logging --v=1",
     "--verbose",
-    # "--headless",
+    "--headless",
     # "--disable-gpu",
     # "--window-size=1920,1200",
     # "--ignore-certificate-errors",
