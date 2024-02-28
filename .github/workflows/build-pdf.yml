@@ -26,6 +26,8 @@ jobs:
         run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
       - name: Install xvfb
         run: sudo apt-get install xvfb
+      - name: Install JQ
+        run: sudo apt-get install jq
 
       - name: Install Node.js
         uses: actions/setup-node@v2
@@ -48,9 +50,17 @@ jobs:
           sleep 20
           python download_pdf.py
 
-      - name: Check pdf
-        run: ls -l
-
+      - name: Check pdf exists
+        run: |
+          echo "Check if pdf exists..."
+          FILENAME=$(jq -r '.personnal.firstname + "_" + .personnal.lastname' src/assets/bob_blandin.json)
+          echo "Filename: $FILENAME"
+          if [ -f "src/assets/CV_$FILENAME.pdf" ]; then
+            echo "File exists"
+          else
+            echo "File does not exist"
+            exit 1
+          fi
 #      - name: Send mail
 #        uses: dawidd6/action-send-mail@v3
 #        with:

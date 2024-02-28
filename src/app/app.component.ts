@@ -11,6 +11,12 @@ import {calibri_bold} from "./jspdf-fonts/calibri-bold";
 import {calibri_normal} from "./jspdf-fonts/calibri-normal";
 import {Data} from './model/data.model';
 
+
+enum PdfBuildAction {
+    DOWNLOAD,
+    OPEN_IN_NEW_TAB
+}
+
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -28,7 +34,6 @@ import {Data} from './model/data.model';
 })
 export class AppComponent implements OnInit {
     data: Data = undefined;
-    downloaded = false;
 
     @ViewChild('cvRoot', {static: false}) public cvRoot: ElementRef;
 
@@ -37,8 +42,16 @@ export class AppComponent implements OnInit {
         console.log("Data loaded");
     }
 
+    openInNewTab(): void {
+        this.buildPdf(PdfBuildAction.OPEN_IN_NEW_TAB);
+    }
+
     downloadAsPdf(): void {
-        console.log("Download as PDF");
+        this.buildPdf(PdfBuildAction.DOWNLOAD);
+    }
+
+    private buildPdf(action: PdfBuildAction): void {
+        console.log(`Building PDF with action: ${action}`);
         const rootElement = this.cvRoot.nativeElement;
         const width = rootElement.getBoundingClientRect().width;
         const height = rootElement.getBoundingClientRect().height;
@@ -50,25 +63,37 @@ export class AppComponent implements OnInit {
         pdf.addFont('calibri.ttf', 'calibri', 'normal');
         pdf.addFileToVFS('calibri.ttf', calibri_bold);
         pdf.addFont('calibri.ttf', 'calibri', 'bold');
-
         pdf.setFont('calibri', 'normal');
-        //
         pdf.html(rootElement, {
             callback: (pdf) => {
                 rootElement.querySelectorAll("a").forEach((a) => {
                     pdf.link(a.offsetLeft, a.offsetTop, a.offsetWidth, a.offsetHeight, {url: a.href});
                 });
 
-                // window.open(pdf.output('bloburl'), '_blank');
-                pdf.save(
-                    'CV_' +
-                    this.data.personal.firstName.toUpperCase() +
-                    '_' +
-                    this.data.personal.lastName.toUpperCase() +
-                    '.pdf',
-                );
-                this.downloaded = true;
+
+                switch (action) {
+                    case PdfBuildAction.DOWNLOAD:
+                        this.downloadPdf(pdf);
+                        break;
+                    case PdfBuildAction.OPEN_IN_NEW_TAB:
+                        this.openPdfInNewTab(pdf);
+                        break;
+                }
             },
         });
+    }
+
+    private openPdfInNewTab(pdf: jsPDF) {
+        window.open(pdf.output('bloburl'), '_blank');
+    }
+
+    private downloadPdf(pdf: jsPDF) {
+        pdf.save(
+            'CV_' +
+            this.data.personal.firstName.toUpperCase() +
+            '_' +
+            this.data.personal.lastName.toUpperCase() +
+            '.pdf',
+        );
     }
 }

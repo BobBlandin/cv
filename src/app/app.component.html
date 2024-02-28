@@ -1,7 +1,8 @@
-<div>
+<div id="actions">
     <button id="downloadButton" (click)="downloadAsPdf()">Download as PDF</button>
+    <button id="openButton" (click)="openInNewTab()">Open PDF in new tab</button>
 </div>
-<div *ngIf="this.data && !this.downloaded" id="root" #cvRoot>
+<div *ngIf="this.data" id="root" #cvRoot>
     <cv-informations [contact]="this.data.contact" [competences]="this.data.competences" [formations]="this.data.formations"
                      [others]="this.data.others" [photo]="this.data.photo"></cv-informations>
     <div id="main">

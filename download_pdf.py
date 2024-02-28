@@ -9,31 +9,19 @@ from selenium.webdriver.remote.remote_connection import LOGGER
 
 LOGGER.setLevel(logging.DEBUG)
 
-# display = Display(visible=0, size=(800, 800))
-# display.start()
-
-chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+# Check if the current version of chromedriver exists
 # and if it doesn't exist, download it automatically,
 # then add chromedriver to path
+chromedriver_autoinstaller.install()
 
 chrome_options = webdriver.ChromeOptions()
-# Add your options as needed
 options = [
-    # Define window size here
     "--window-size=1200,1200",
     "--ignore-certificate-errors",
-    # log level to debug
     "--log-level=0",
     "--enable-logging --v=1",
     "--verbose",
     "--headless",
-    # "--disable-gpu",
-    # "--window-size=1920,1200",
-    # "--ignore-certificate-errors",
-    # "--disable-extensions",
-    # "--no-sandbox",
-    # "--disable-dev-shm-usage",
-    # '--remote-debugging-port=9222'
 ]
 
 for option in options:
@@ -45,29 +33,16 @@ chrome_options.add_experimental_option("prefs", prefs)
 
 driver = webdriver.Chrome(options=chrome_options)
 
+print("Opening the website")
 driver.get('http://localhost:4200/')
-print(driver.title)
 
+print("Waiting for the page to load")
 time.sleep(5)
-# driver.implicitly_wait(5)
 
-# click on the screen at 100, 100
-# driver.execute_script("document.elementFromPoint(100, 100).click();")
+print("Clicking the download button")
 driver.find_element(By.ID, 'downloadButton').click()
 
+print("Waiting for the download to complete")
 time.sleep(5)
-# driver.implicitly_wait(5)
-#
-# # display if root exist always
-# elt = driver.find_element(By.ID, 'root')
-# print("Element found: ", elt)
-#
-# print("Button text: ", driver.find_element(By.ID, 'downloadButton').text)
-
-logs = driver.get_log('browser')
-print("Logs: ", logs)
-
-for entry in logs:
-    print(entry)
 
 driver.quit()
