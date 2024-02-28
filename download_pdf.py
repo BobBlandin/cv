@@ -1,15 +1,16 @@
 import chromedriver_autoinstaller
 import logging
 import os
-from pyvirtualdisplay import Display
+import time
+# from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.remote_connection import LOGGER
 
 LOGGER.setLevel(logging.DEBUG)
 
-display = Display(visible=0, size=(800, 800))
-display.start()
+# display = Display(visible=0, size=(800, 800))
+# display.start()
 
 chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
 # and if it doesn't exist, download it automatically,
@@ -25,7 +26,7 @@ options = [
     "--log-level=0",
     "--enable-logging --v=1",
     "--verbose",
-    "--headless",
+    # "--headless",
     # "--disable-gpu",
     # "--window-size=1920,1200",
     # "--ignore-certificate-errors",
@@ -47,19 +48,21 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get('http://localhost:4200/')
 print(driver.title)
 
-driver.implicitly_wait(5)
+time.sleep(5)
+# driver.implicitly_wait(5)
 
 # click on the screen at 100, 100
 # driver.execute_script("document.elementFromPoint(100, 100).click();")
 driver.find_element(By.ID, 'downloadButton').click()
 
-driver.implicitly_wait(5)
-
-# display if root exist always
-elt = driver.find_element(By.ID, 'root')
-print("Element found: ", elt)
-
-print("Button text: ", driver.find_element(By.ID, 'downloadButton').text)
+time.sleep(5)
+# driver.implicitly_wait(5)
+#
+# # display if root exist always
+# elt = driver.find_element(By.ID, 'root')
+# print("Element found: ", elt)
+#
+# print("Button text: ", driver.find_element(By.ID, 'downloadButton').text)
 
 logs = driver.get_log('browser')
 print("Logs: ", logs)

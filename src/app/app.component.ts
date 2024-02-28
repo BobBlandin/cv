@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.data = PersonalData as unknown as Data;
-        console.log("Loaded data");
+        console.log("Data loaded");
     }
 
     downloadAsPdf(): void {
