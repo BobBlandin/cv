@@ -59,6 +59,7 @@ jobs:
       - name: Check pdf exists
         run: |
           echo "Check if pdf exists..."
+          cat src/assets/bob_blandin.json
           NAME=$(cat src/assets/bob_blandin.json | jq -r '.personal.firstname + "_" + .personal.lastname' | tr '[:lower:]' '[:upper:]')
           echo "Name: $NAME"
           if [ -f "src/assets/CV_$NAME.pdf" ]; then
