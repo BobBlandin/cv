@@ -8,6 +8,7 @@ export interface Data {
     formations: Formation[];
     others: Other[];
     experiences: Experience[];
+    hiddenWord: string[];
 }
 
 export interface Other {

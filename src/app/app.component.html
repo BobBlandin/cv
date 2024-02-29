@@ -3,6 +3,11 @@
     <button id="openButton" (click)="openInNewTab()">Open PDF in new tab</button>
 </div>
 <div *ngIf="this.data" id="root" #cvRoot>
+    <div id="key-words">
+        <span *ngFor="let word of this.data.hiddenWord">
+            {{ word }}
+        </span>
+    </div>
     <cv-informations [contact]="this.data.contact" [competences]="this.data.competences" [formations]="this.data.formations"
                      [others]="this.data.others" [photo]="this.data.photo"></cv-informations>
     <div id="main">

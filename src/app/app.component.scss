@@ -7,8 +7,6 @@
 #root {
   width: 210mm;
   height: $cvHeight;
-  //margin: 0;
-  //padding: 0;
   background-color: white;
   box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 
@@ -98,6 +96,15 @@
 
 #openButton:hover {
   filter: brightness(0.9);
+}
+
+#key-words {
+  z-index: -5;
+  position: absolute;
+  font-size: 0.1em;
+  cursor: default;
+  width: 70mm;
+  color: $main-color;
 }
 
 
