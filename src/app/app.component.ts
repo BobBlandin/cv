@@ -68,11 +68,20 @@ export class AppComponent implements OnInit {
             callback: (pdf) => {
                 const rootElementOffset = rootElement.getBoundingClientRect();
                 rootElement.querySelectorAll("a").forEach((a) => {
-                    pdf.link(a.offsetLeft - rootElementOffset.left, a.offsetTop - rootElementOffset.top, a.offsetWidth, a.offsetHeight, {
+                    const rect = a.getBoundingClientRect();
+                    pdf.link(rect.left - rootElementOffset.left, rect.top - rootElementOffset.top, a.offsetWidth, a.offsetHeight, {
                         url: a.href,
                         isInternal: a.href.startsWith("data:")
                     });
+                    // for debug
+                    //pdf.rect(rect.left - rootElementOffset.left, rect.top - rootElementOffset.top, a.offsetWidth, a.offsetHeight, "S");
                 });
+
+                pdf.setProperties({
+                    author: this.data.personal.firstName + " " + this.data.personal.lastName,
+                    title: "Curriculum Vitae de " + this.data.personal.firstName + " " + this.data.personal.lastName,
+                    creator: this.data.personal.sourcesLink,
+                })
 
 
                 switch (action) {
