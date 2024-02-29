@@ -57,8 +57,7 @@ export class AppComponent implements OnInit {
         const height = rootElement.getBoundingClientRect().height;
 
 
-        // Add 0.5 to height to avoid a new blank page
-        const pdf = new jsPDF('p', 'px', [width, height + 0.5]);
+        const pdf = new jsPDF('p', 'px', [width, height]);
         pdf.addFileToVFS('calibri.ttf', calibri_normal);
         pdf.addFont('calibri.ttf', 'calibri', 'normal');
         pdf.addFileToVFS('calibri.ttf', calibri_bold);
@@ -77,11 +76,17 @@ export class AppComponent implements OnInit {
                     //pdf.rect(rect.left - rootElementOffset.left, rect.top - rootElementOffset.top, a.offsetWidth, a.offsetHeight, "S");
                 });
 
+                const length = pdf.internal.pages.length;
+                //keep only the first page
+                for (let i = 2; i <= length; i++) {
+                    pdf.deletePage(i);
+                }
+
                 pdf.setProperties({
                     author: this.data.personal.firstName + " " + this.data.personal.lastName,
                     title: "Curriculum Vitae de " + this.data.personal.firstName + " " + this.data.personal.lastName,
                     creator: this.data.personal.sourcesLink,
-                })
+                });
 
 
                 switch (action) {
