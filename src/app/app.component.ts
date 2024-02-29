@@ -65,6 +65,11 @@ export class AppComponent implements OnInit {
         pdf.setFont('calibri', 'normal');
         pdf.html(rootElement, {
             callback: (pdf) => {
+                //keep only the first page
+                while (pdf.internal["getNumberOfPages"]() > 1) {
+                    pdf.deletePage(2);
+                }
+
                 const rootElementOffset = rootElement.getBoundingClientRect();
                 rootElement.querySelectorAll("a").forEach((a) => {
                     const rect = a.getBoundingClientRect();
@@ -75,12 +80,6 @@ export class AppComponent implements OnInit {
                     // for debug
                     //pdf.rect(rect.left - rootElementOffset.left, rect.top - rootElementOffset.top, a.offsetWidth, a.offsetHeight, "S");
                 });
-
-                const length = pdf.internal.pages.length;
-                //keep only the first page
-                for (let i = 2; i <= length; i++) {
-                    pdf.deletePage(i);
-                }
 
                 pdf.setProperties({
                     author: this.data.personal.firstName + " " + this.data.personal.lastName,
