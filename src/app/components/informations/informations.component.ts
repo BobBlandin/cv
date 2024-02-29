@@ -1,6 +1,6 @@
-import {NgForOf, NgOptimizedImage} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {Component, Input} from "@angular/core";
-import {Competence, Contact, Formation} from "../../model/data.model";
+import {Competence, Contact, Formation, Other} from "../../model/data.model";
 
 @Component({
     selector: 'cv-informations',
@@ -8,7 +8,8 @@ import {Competence, Contact, Formation} from "../../model/data.model";
     standalone: true,
     imports: [
         NgForOf,
-        NgOptimizedImage
+        NgOptimizedImage,
+        NgIf
     ],
     styleUrl: './informations.component.scss'
 })
@@ -17,5 +18,6 @@ export class InformationsComponent {
     @Input() contact: Contact;
     @Input() competences: Competence[];
     @Input() formations: Formation[];
-    @Input() others: string[];
+    @Input() others: Other[];
+    protected readonly window = window;
 }

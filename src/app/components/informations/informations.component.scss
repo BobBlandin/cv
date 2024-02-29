@@ -46,12 +46,13 @@
   margin-right: 2mm;
 }
 
-.information > h3 {
+.information h3 {
+  display: block;
   font-size: 1.1em;
-  margin: 0 0 2mm;
+  margin: 0;
 }
 
-.information > p {
+.information > p, .information > a {
   margin: 0;
   font-size: 0.9em;
 }
@@ -68,4 +69,25 @@
 
 .information-category:not(:last-child) {
   margin-bottom: 7.5mm;
+}
+
+.title {
+  margin: 0 0 2mm;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  //gap: 2mm;
+}
+
+.link {
+  color: inherit;
+  text-decoration: inherit;
+  display: flex;
+  align-items: start;
+}
+
+.link > img {
+  width: 4mm;
+  margin-right: 4mm;
+  margin-left: 1mm;
 }

@@ -6,8 +6,13 @@ export interface Data {
     contact: Contact;
     competences: Competence[];
     formations: Formation[];
-    others: string[];
+    others: Other[];
     experiences: Experience[];
+}
+
+export interface Other {
+    value: string;
+    link?: string;
 }
 
 export interface Personal {
@@ -16,6 +21,8 @@ export interface Personal {
     birthDate: string;
     description: string;
     job: string;
+    sourcesLink: string;
+    sourcesQRCode: string;
 }
 
 export interface Contact {
@@ -33,6 +40,7 @@ export interface Formation {
     date: string;
     name: string;
     description: string;
+    file?: string;
 }
 
 export interface Experience {

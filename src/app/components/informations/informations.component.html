@@ -4,7 +4,7 @@
     <div class="simple-information information"><a href="mailto:{{ this.contact.mail }}"><img
             src="../../../assets/mail.png"
             alt="mail"/>{{ this.contact.mail }}</a></div>
-    
+
     <div class="simple-information information"><a
             href="tel:+33{{ this.contact.phone }}"><img src="../../../assets/phone.png" alt="phone"/>{{ this.contact.phone }}</a></div>
 
@@ -25,7 +25,11 @@
     <h2 class="category-title">Formations</h2>
     <div *ngFor="let formation of this.formations" class="information">
         <p class="date">{{ formation.date }}</p>
-        <h3>{{ formation.name }}</h3>
+        <div class="title">
+            <h3>{{ formation.name }}</h3>
+            <a class="link" *ngIf="formation.file" href="{{formation.file}}" download><img src="assets/external-link-white.png"
+                                                                                           alt="link"/></a>
+        </div>
         <p>{{ formation.description }}</p>
     </div>
 </div>
@@ -33,6 +37,8 @@
 <div class="information-category">
     <h2 class="category-title">Divers / Loisirs</h2>
     <div *ngFor="let other of this.others" class="information">
-        <p>{{ other }}</p>
+        <p *ngIf="!other.link">{{ other.value }}</p>
+        <a *ngIf="other.link" class="link" href="{{ other.link }}">{{ other.value }}<img src="assets/external-link-white.png"
+                                                                                         alt="link"/></a>
     </div>
 </div>
