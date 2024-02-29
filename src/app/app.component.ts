@@ -68,7 +68,10 @@ export class AppComponent implements OnInit {
             callback: (pdf) => {
                 const rootElementOffset = rootElement.getBoundingClientRect();
                 rootElement.querySelectorAll("a").forEach((a) => {
-                    pdf.link(a.offsetLeft - rootElementOffset.left, a.offsetTop - rootElementOffset.top, a.offsetWidth, a.offsetHeight, {url: a.href});
+                    pdf.link(a.offsetLeft - rootElementOffset.left, a.offsetTop - rootElementOffset.top, a.offsetWidth, a.offsetHeight, {
+                        url: a.href,
+                        isInternal: a.href.startsWith("data:")
+                    });
                 });
 
 

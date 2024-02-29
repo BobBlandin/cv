@@ -17,6 +17,18 @@
   }
 }
 
+#sources-link {
+  // center the text and image
+  display: flex;
+  align-items: center;
+  column-gap: 1mm;
+  color: $secondary-color;
+
+  img {
+    width: 4mm;
+  }
+}
+
 h1 {
   color: $main-color;
   font-size: 3em;
