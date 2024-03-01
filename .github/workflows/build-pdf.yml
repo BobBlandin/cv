@@ -81,9 +81,9 @@ jobs:
           echo "Buil app..."
           configuration_option=""
           if [ "${{ github.event.inputs.lang }}" = "en" ]; then
-            configuration_option="--configuration=en"
+            configuration_option="-- --configuration=en"
           fi
-          ng serve $configuration_option &
+          npm run start $configuration_option &
           sleep 20
           python download_pdf.py
 
