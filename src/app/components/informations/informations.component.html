@@ -1,6 +1,6 @@
 <img id="photo" src="{{ this.photo }}" alt="Bob Blandin"/>
 <div class="information-category">
-    <h2 class="category-title">Contact</h2>
+    <h2 class="category-title" cvI18n="title.contact">Contact</h2>
     <div class="simple-information information"><a href="mailto:{{ this.contact.mail }}"><img
             src="../../../assets/mail.png"
             alt="mail"/>{{ this.contact.mail }}</a></div>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="information-category">
-    <h2 class="category-title">Compétences</h2>
+    <h2 class="category-title" cvI18n="title.skills">Compétences</h2>
     <div *ngFor="let competence of this.competences" class="information">
         <h3>{{ competence.type }}</h3>
         <p>{{ competence.names.join(", ") }}</p>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="information-category">
-    <h2 class="category-title">Formations</h2>
+    <h2 class="category-title" cvI18n="title.formations">Formations</h2>
     <div *ngFor="let formation of this.formations" class="information">
         <p class="date">{{ formation.date }}</p>
         <div class="title">
@@ -35,7 +35,7 @@
 </div>
 
 <div class="information-category">
-    <h2 class="category-title">Divers / Loisirs</h2>
+    <h2 class="category-title" cvI18n="title.others">Divers / Loisirs</h2>
     <div *ngFor="let other of this.others" class="information">
         <p *ngIf="!other.link">{{ other.value }}</p>
         <a *ngIf="other.link" class="link" href="{{ other.link }}">{{ other.value }}<img src="assets/external-link-white.png"

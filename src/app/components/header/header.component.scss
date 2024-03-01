@@ -18,11 +18,15 @@
 }
 
 #sources-link {
-  // center the text and image
   display: flex;
   align-items: center;
   column-gap: 1mm;
   color: $secondary-color;
+
+  span {
+    font-style: italic;
+    text-decoration: underline;
+  }
 
   img {
     width: 4mm;
