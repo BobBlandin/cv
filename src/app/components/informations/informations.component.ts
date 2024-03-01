@@ -1,5 +1,6 @@
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {Component, Input} from "@angular/core";
+import {I18nDirective} from "../../directives/i18n.directive";
 import {Competence, Contact, Formation, Other} from "../../model/data.model";
 
 @Component({
@@ -9,7 +10,8 @@ import {Competence, Contact, Formation, Other} from "../../model/data.model";
     imports: [
         NgForOf,
         NgOptimizedImage,
-        NgIf
+        NgIf,
+        I18nDirective
     ],
     styleUrl: './informations.component.scss'
 })

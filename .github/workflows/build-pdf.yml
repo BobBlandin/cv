@@ -4,6 +4,14 @@ on:
       mail:
         description: 'Destination mail'
         required: true
+      lang:
+        description: 'Language'
+        default: 'fr'
+        type: choice
+        options:
+          - 'fr'
+          - 'en'
+
 
 jobs:
   build-pdf:
@@ -43,9 +51,24 @@ jobs:
           echo "Install dependencies..."
           npm ci
 
+      - name: Get data link
+        id: get_data_link
+        env:
+          LINK_GDRIVE_DATA_FR: ${{ secrets.LINK_GDRIVE_DATA }}
+          LINK_GDRIVE_DATA_EN: ${{ secrets.LINK_GDRIVE_DATA_EN }}
+        run: |
+          echo "Get data link..."
+            if [ "${{ github.event.inputs.lang }}" = "fr" ]; then
+                echo "Set link to fr"
+                echo "LINK_GDRIVE_DATA=$LINK_GDRIVE_DATA_FR" >> $GITHUB_OUTPUT
+            else
+                echo "Set link to en"
+                echo "LINK_GDRIVE_DATA=$LINK_GDRIVE_DATA_EN" >> $GITHUB_OUTPUT
+            fi
+
       - name: Run
         env:
-          LINK_GDRIVE_DATA: ${{ secrets.LINK_GDRIVE_DATA }}
+          LINK_GDRIVE_DATA: ${{ steps.get_data_link.outputs.LINK_GDRIVE_DATA }}
         run: |
           destData="src/assets/data.json"
           curl -L -X GET $LINK_GDRIVE_DATA -o $destData
@@ -56,7 +79,11 @@ jobs:
             exit 1
           fi
           echo "Buil app..."
-          npm run start &
+          configuration_option=""
+          if [ "${{ github.event.inputs.lang }}" = "en" ]; then
+            configuration_option="-- --configuration=en"
+          fi
+          npm run start $configuration_option &
           sleep 20
           python download_pdf.py
 

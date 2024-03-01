@@ -1,5 +1,6 @@
 import {NgForOf} from "@angular/common";
 import {Component, Input, OnChanges} from "@angular/core";
+import {I18nDirective} from "../../directives/i18n.directive";
 import {Personal} from "../../model/data.model";
 
 @Component({
@@ -7,7 +8,8 @@ import {Personal} from "../../model/data.model";
     templateUrl: './header.component.html',
     standalone: true,
     imports: [
-        NgForOf
+        NgForOf,
+        I18nDirective
     ],
     styleUrl: './header.component.scss'
 })

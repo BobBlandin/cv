@@ -7,6 +7,7 @@ import PersonalData from '../assets/data.json';
 import {ExperienceComponent} from './components/experience/experience.component';
 import {HeaderComponent} from './components/header/header.component';
 import {InformationsComponent} from './components/informations/informations.component';
+import {I18nDirective} from "./directives/i18n.directive";
 import {calibri_bold} from "./jspdf-fonts/calibri-bold";
 import {calibri_normal} from "./jspdf-fonts/calibri-normal";
 import {Data} from './model/data.model';
@@ -28,6 +29,7 @@ enum PdfBuildAction {
         HeaderComponent,
         ExperienceComponent,
         NgForOf,
+        I18nDirective,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
