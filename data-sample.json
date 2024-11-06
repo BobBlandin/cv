@@ -1,0 +1,71 @@
+{
+  "personal": {
+    "firstName": "",
+    "lastName": "",
+    "birthDate": "",
+    "description": "",
+    "job": "",
+    "sourcesLink": "https://github.com/BobBlandin/cv",
+    "sourcesQRCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhAAAAIQAQMAAADqzsXKAAAABlBMVEUyO0z////rWFdpAAAAAWJLR0QB/wIt3gAAAa9JREFUeNrt3UtuwzAMBUDf/9LtpkHMR8ZJkZ05AlIgtjRLQeInPX6+HgcCgUAgEAhEI44yHt8fb/4mlnfPuQgEYhtx2kCGJWWDaXMRCMQ24rnk+eQ8tX7KXAQCsZrIZxVGIBCI87aSm019j0AgNhNXi/KI8sGtCIFA3JbIkOnV58OoKwKBuCUxpFnbxH9ndREIxE2JqyV5ODmnaREIxE7i+lLTvyEQiI3EMfytZD4vgRAEArGOqMHRPJBkiOS0CoFArCNqOiWDIXm1GUvKEQjE7Yks4OiL5iQtAoHYR2SrWl5iagNbC6kiEIhVRE+lZLtaBk3HqjEEAnF7oodGe0o2G11blgaBQKwg+hFkOrBMA4FA7CMy+JGHktx8ylMEArGMyI3nKuUSJaMIBGIZ8TooOh1TxhIOBAKxgJiCHlkA1ptQLltcEQjETYmpJX46kkw/o4FAILYR7xIqtS3lZVYXgUCsILIsdPrHBFOCBYFAbCd6aVc/wAwpWQQCsZDoAZB+7Xm7ayEQiJsSeaXp15iJRyAQ+4jhohJlo9nM1kq+EAjECuK7gUAgEAgEAlHGL+IN83FzLyV9AAAAAElFTkSuQmCC"
+  },
+  "photo": "<BASE 64 Encoded photo>",
+  "contact": {
+    "mail": "",
+    "phone": "",
+    "address": ""
+  },
+  "competences": [
+    {
+      "type": "Languages",
+      "names": [
+        "Java"
+      ]
+    },
+    {
+      "type": "Frameworks",
+      "names": [
+        "Spring"
+      ]
+    },
+    {
+      "type": "Tests",
+      "names": [
+        "Junit"
+      ]
+    },
+    {
+      "type": "Outils",
+      "names": [
+        "Git"
+      ]
+    }
+  ],
+  "formations": [
+    {
+      "date": "",
+      "name": "",
+      "description": "",
+      "file": "<base 64 encode image>"
+    }
+  ],
+  "others": [
+    {
+      "value": "Example 1 with link",
+      "link": "https://www.google.com"
+    },
+    {
+      "value": "Without link"
+    }
+  ],
+  "experiences": [
+    {
+      "period": "",
+      "company": "",
+      "title": "",
+      "description": "",
+      "tasks": [
+        "task"
+      ]
+    }
+  ]
+}
