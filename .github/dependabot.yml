@@ -6,6 +6,7 @@ updates:
       interval: "daily"
     commit-message:
       prefix: "[Auto dependency update]"
+    target-branch: "main"
     groups:
       dependencies:
         patterns:
