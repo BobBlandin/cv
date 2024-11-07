@@ -1,7 +1,7 @@
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {Component, Input} from "@angular/core";
 import {I18nDirective} from "../../directives/i18n.directive";
-import {Competence, Contact, Formation, Other} from "../../model/data.model";
+import {Competence, Contact, Formation, Other, Source} from "../../model/data.model";
 
 @Component({
     selector: 'cv-informations',
@@ -21,5 +21,6 @@ export class InformationsComponent {
     @Input() competences: Competence[];
     @Input() formations: Formation[];
     @Input() others: Other[];
+    @Input() source: Source;
     protected readonly window = window;
 }

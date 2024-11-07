@@ -9,6 +9,8 @@ export interface Data {
     others: Other[];
     experiences: Experience[];
     hiddenWord: string[];
+
+    source: Source;
 }
 
 export interface Other {
@@ -22,8 +24,6 @@ export interface Personal {
     birthDate: string;
     description: string;
     job: string;
-    sourcesLink: string;
-    sourcesQRCode: string;
 }
 
 export interface Contact {
@@ -50,4 +50,9 @@ export interface Experience {
     title: string;
     description: string;
     tasks: string[];
+}
+
+export interface Source {
+  link: string;
+  qrCode: string;
 }

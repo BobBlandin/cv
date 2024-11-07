@@ -1,53 +1,29 @@
 @import "../../styles/theme";
 
-#qrcode-gh {
-  position: absolute;
-  margin-left: 110mm;
-  display: flex;
+.title {
+  /* display blocks on same line, separated by a "-" */
+  display: grid;
   align-items: center;
-  flex-direction: column;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 2mm;
+  margin: 0 0 2mm;
 
-  img {
-    width: 16mm;
+  h1 {
+    color: $main-color;
+    font-size: 2.4em;
+    font-weight: 500;
+    margin: 0;
   }
 
-  small {
-    font-size: 0.7em;
-    font-style: italic;
-  }
-}
-
-#sources-link {
-  display: flex;
-  align-items: center;
-  column-gap: 1mm;
-  color: $secondary-color;
-
-  span {
-    font-style: italic;
-    text-decoration: underline;
+  h1 > span {
+    font-weight: 700;
   }
 
-  img {
-    width: 4mm;
+  h3 {
+    font-weight: 500;
+    font-size: 1.9em;
+    margin: 1.2mm 0 0;
   }
-}
-
-h1 {
-  color: $main-color;
-  font-size: 3em;
-  font-weight: 500;
-  margin: 0;
-}
-
-h1 > span {
-  font-weight: 700;
-}
-
-h3 {
-  font-weight: 500;
-  font-size: 1.5em;
-  margin: 0 0 5mm;
 }
 
 p {
