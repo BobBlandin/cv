@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
                 pdf.setProperties({
                     author: this.data.personal.firstName + " " + this.data.personal.lastName,
                     title: "Curriculum Vitae de " + this.data.personal.firstName + " " + this.data.personal.lastName,
-                    creator: this.data.personal.sourcesLink,
+                    creator: this.data.source.link,
                 });
 
 

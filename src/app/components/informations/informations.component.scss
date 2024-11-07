@@ -9,8 +9,8 @@
 }
 
 #photo {
-  width: 43.7mm;
-  height: 43.7mm;
+  width: 34.7mm;
+  height: 34.7mm;
   object-fit: cover;
   display: block;
   border-radius: 50%;
@@ -18,15 +18,15 @@
 }
 
 .information-category {
-  margin-left: 12.8mm;
+  margin-left: 2.8mm;
 }
 
 .category-title {
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding-bottom: 1mm;
   border-bottom: 0.5mm solid white;
   margin-top: 0;
-  margin-bottom: 5mm;
+  margin-bottom: 2mm;
 }
 
 .simple-information {
@@ -43,6 +43,10 @@
 
 .simple-information > a > img {
   height: 4.5mm;
+  margin-right: 2mm;
+}
+
+.information {
   margin-right: 2mm;
 }
 
@@ -89,4 +93,26 @@
   width: 4mm;
   margin-right: 4mm;
   margin-left: 1mm;
+}
+
+#sources-link {
+  position: absolute;
+  margin: 0 0 0 27mm;
+
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: 1mm;
+    color: white;
+    font-size: 0.8em;
+
+    span {
+      font-style: italic;
+      text-decoration: underline;
+    }
+
+    img {
+      width: 4mm;
+    }
+  }
 }
